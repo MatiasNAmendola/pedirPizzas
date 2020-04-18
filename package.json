@@ -1,0 +1,24 @@
+{
+  "name": "pedirPizzas",
+  "version": "1.0.0",
+  "description": "Servicios para el manejo de pedidos de pizzas",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pkg": "./node_modules/.bin/serverless package",
+    "debug": "SLS_DEBUG=* ./node_modules/.bin/serverless package"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.658.0",
+    "aws-xray-sdk": "^2.5.0",
+    "serverless-dynamodb-autoscaling": "^0.6.2",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "serverless-api-gateway-xray": "^1.0.1",
+    "serverless-dotenv-plugin": "^2.1.1"
+  }
+}

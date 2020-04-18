@@ -1,0 +1,14 @@
+# AWS IAM Role Statements
+- Effect: "Allow"
+  Action:
+    - "sqs:SendMessage"
+  Resource: "arn:aws:sqs:${env:AWS_REGION_VAR}:*:${env:PENDING_ORDER_QUEUE_NAME}"
+
+- Effect: "Allow"
+  Action:
+    - "dynamodb:GetItem"
+    - "dynamodb:PutItem"
+    - "dynamodb:UpdateItem"
+    - "dynamodb:DeleteItem"
+  Resource:
+    - "arn:aws:dynamodb:${env:AWS_REGION_VAR}:*:table/${env:COMPLETED_ORDERS_TABLE}"

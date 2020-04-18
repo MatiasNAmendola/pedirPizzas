@@ -1,0 +1,16 @@
+# Table Autoscaling Configuration
+#
+# ** There is an outstanding issue with the serverless-dynamodb-autoscaling plugin
+#   where attempting to provision auto scaling watches on multiple tables at once, fails in cloudformation.
+#   For now, I'm only enabling for loans table.
+#   When issue is resolved, uncomment the config for the other tables.
+#
+- table: ${env:COMPLETED_ORDERS_TABLE}  # DynamoDB Resource
+  read:
+    minimum: 2       # Minimum read capacity
+    maximum: 10      # Maximum read capacity
+    usage: 0.75      # Targeted usage percentage
+  write:
+    minimum: 2       # Minimum write capacity
+    maximum: 10      # Maximum write capacity
+    usage: 0.5       # Targeted usage percentage

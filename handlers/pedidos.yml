@@ -1,0 +1,31 @@
+hacerPedido:
+  description: Hacer pedido de pizzas
+  handler: modules/orders/functions/hacerPedido.hacerPedido
+  events:
+    - http:
+        method: post
+        path: pedido
+
+prepararPedido:
+  description: Preparar pedido de pizzas
+  handler: modules/orders/functions/prepararPedido.prepararPedido
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - PendingOrdersQueue
+            - Arn
+        batchSize: 1
+
+enviarPedido:
+  description: Enviar pedido de pizzas
+  handler: modules/orders/functions/enviarPedido.enviarPedido
+  events:
+    - stream:
+        type: dynamodb
+        batchSize: 1
+        startingPosition: LATEST
+        arn:
+          Fn::GetAtt:
+            - CompletedOrdersTable
+            - StreamArn
