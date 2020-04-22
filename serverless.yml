@@ -6,6 +6,7 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-dynamodb-autoscaling
   - serverless-api-gateway-xray
+  - serverless-plugin-tracing
 
 custom:
   apiGatewayXray: true
@@ -21,9 +22,7 @@ provider:
     PENDING_ORDER_QUEUE:
       Ref: PendingOrdersQueue
 
-  tracing:
-    apiGateway: true
-    lambda: true
+  tracing: true # enable tracing
 
   iamRoleStatements: ${file(./config/iamRoleStatements.yml)}
 

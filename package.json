@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "serverless-api-gateway-xray": "^1.0.1",
-    "serverless-dotenv-plugin": "^2.1.1"
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-plugin-tracing": "^2.0.0"
   }
 }
